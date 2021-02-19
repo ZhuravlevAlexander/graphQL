@@ -8,19 +8,16 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
-        "barryvdh/laravel-cors": "^2.0",
-        "fideloper/proxy": "^4.0",
-        "joselfonseca/lighthouse-graphql-passport-auth": "^6.0.0",
-        "laravel/framework": "^8.12.0",
-        "laravel/passport": "^10.1.0",
-        "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.2",
+        "php": "^7.3|^8.0",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "joselfonseca/lighthouse-graphql-passport-auth": "^6.0",
+        "laravel/framework": "^8.12",
+        "laravel/passport": "^10.1",
+        "laravel/tinker": "^2.5",
         "mll-lab/laravel-graphql-playground": "^2.5",
-        "nunomaduro/collision": "^5.3",
-        "nuwave/lighthouse": "^5.2",
-        "rebing/graphql-laravel": "^6.1.0",
-        "symfony/console": "^5.2"
+        "nuwave/lighthouse": "^5.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

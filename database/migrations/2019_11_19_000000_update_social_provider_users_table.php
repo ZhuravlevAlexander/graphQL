@@ -14,12 +14,17 @@ class UpdateSocialProviderUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('provider')->nullable();
-            $table->string('provider_id')->nullable();
-
-            if (!Schema::hasColumn('users', 'avatar')) {
+            if (! Schema::hasColumn('users', 'avatar')) {
                 $table->string('avatar')->nullable();
             }
+        });
+        Schema::create('social_providers', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->string('provider')->index();
+            $table->string('provider_id')->index();
+            $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -31,9 +36,8 @@ class UpdateSocialProviderUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('provider');
-            $table->dropColumn('provider_id');
             $table->dropColumn('avatar');
         });
+        Schema::dropIfExists('social_providers');
     }
 }

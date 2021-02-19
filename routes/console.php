@@ -25,4 +25,3 @@ Artisan::command('user', function () {
         'password' => bcrypt('123456789qq')
     ]);
 })->describe('Create sample user');
-

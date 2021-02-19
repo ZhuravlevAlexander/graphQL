@@ -7,12 +7,6 @@ input RefreshTokenInput {
     refresh_token: String
 }
 
-type User {
-    id: ID!
-    name: String!
-    email: String!
-}
-
 type AuthPayload {
     access_token: String
     refresh_token: String
@@ -43,6 +37,11 @@ type RegisterResponse {
     status: RegisterStatuses!
 }
 
+type UpdatePasswordResponse {
+    status: String!
+    message: String
+}
+
 enum RegisterStatuses {
     MUST_VERIFY_EMAIL
     SUCCESS
@@ -55,14 +54,14 @@ input ForgotPasswordInput {
 input NewPasswordWithCodeInput {
     email: String! @rules(apply: ["required", "email"])
     token: String! @rules(apply: ["required", "string"])
-    password: String! @rules(apply: ["required", "confirmed", "min:8"])
+    password: String! @rules(apply: ["required", "confirmed", "min:3"])
     password_confirmation: String!
 }
 
 input RegisterInput {
     name: String! @rules(apply: ["required", "string"])
     email: String! @rules(apply: ["required", "email", "unique:users,email"])
-    password: String! @rules(apply: ["required", "confirmed", "min:8"])
+    password: String! @rules(apply: ["required", "confirmed", "min:3"])
     password_confirmation: String!
 }
 
@@ -74,3 +73,11 @@ input SocialLoginInput {
 input VerifyEmailInput {
     token: String!
 }
+
+input UpdatePassword {
+    old_password: String!
+    password: String! @rules(apply: ["required", "confirmed", "min:3"])
+    password_confirmation: String!
+}
+
+
